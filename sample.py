@@ -52,7 +52,7 @@ def globally_(path, f):
 
 # パス上のある状態で g が成り立ち かつ その直前までのすべての状態で f が成り立つ
 def until_(path, point, g, f):
-    msg = "          真偽 : " + "g : " + str(g) + "f : " + str(f) + " は Until が成り立たない"
+    msg = "          真偽 : " + "g: " + str(g) + ", " + "f: " + str(f) + " は Until が成り立たない"
 
     if not path[point][0]:
         return msg
@@ -68,7 +68,7 @@ def until_(path, point, g, f):
             if f not in path[i][1]:
                 return msg
 
-    msg = "          真偽 : " + "g : " + str(g) + "f : " + str(f) + " は Until が成り立つ"
+    msg = "          真偽 : " + "g: " + str(g) + ", " + "f: " + str(f) + " は Until が成り立つ"
     return msg
 
 
