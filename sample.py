@@ -19,3 +19,6 @@ def globally_(f):
 def until_(f):
     #
     return True
+
+# 本来は無限
+path = [[False, ["a", "b"]], [False, ["a"]], [True, ["b", "c"]], [False, ["a"]]]
