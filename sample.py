@@ -51,9 +51,25 @@ def globally_(path, f):
     return msg
 
 # パス上のある状態で g が成り立ち かつ その直前までのすべての状態で f が成り立つ
-def until_(g, f):
-    #
-    return True
+def until_(path, point, g, f):
+    msg = "          真偽 : " + "g : " + str(g) + "f : " + str(f) + " は Until が成り立たない"
+
+    if not path[point][0]:
+        return msg
+    else:
+        if g not in path[point][1]:
+            return msg
+
+    # point > 0
+    for i in range(point - 1):
+        if not path[i][0]:
+            return msg
+        else:
+            if f not in path[i][1]:
+                return msg
+
+    msg = "          真偽 : " + "g : " + str(g) + "f : " + str(f) + " は Until が成り立つ"
+    return msg
 
 
 # ==============================================================================
@@ -61,7 +77,10 @@ def until_(g, f):
 path = [[False, ["a", "b"]], [False, ["a"]], [True, ["b", "c"]], [False, ["a"]]]
 # 現時点
 current_point = 1
+# ある状態
+point = 3
 
-print( next_(path, current_point, "a") ) # next_ のサンプル
-print( finally_(path, "b") )             # finally_ のサンプル
+print( next_(path, current_point, "a") ) # next_     のサンプル
+print( finally_(path, "b") )             # finally_  のサンプル
 print( globally_(path, "b") )            # globally_ のサンプル
+print( until_(path, point, "a", "b") )   # until_    のサンプル
