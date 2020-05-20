@@ -24,7 +24,11 @@ def finally_(path, f):
                 r = True
                 break
     
-    msg = "          真偽 : " + str(r)
+    if r:
+        msg = "          真偽 : " + str(f) + " は Finally が成り立たつ"
+    else:
+        msg = "          真偽 : " + str(f) + " は Finally が成り立たない"
+
     return msg
 
 # パス上のすべての状態でいつも f が成り立つ
@@ -39,7 +43,11 @@ def globally_(path, f):
             if f not in p[1]:
                 r = False
 
-    msg = "          真偽 : " + str(r)
+    if r:
+        msg = "          真偽 : " + str(f) + " は Globally が成り立たつ"
+    else:
+        msg = "          真偽 : " + str(f) + " は Globally が成り立たない"
+
     return msg
 
 # パス上のある状態で g が成り立ち かつ その直前までのすべての状態で f が成り立つ
