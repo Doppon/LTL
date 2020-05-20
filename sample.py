@@ -16,6 +16,7 @@ def next_(path, current_point, f):
 # パス上のある状態でいつかは f が成り立つ
 def finally_(path, f):
     r = False
+
     # TODO: 本来pathは無限なので変更必要
     for p in path:
         if p[0]:
@@ -27,9 +28,19 @@ def finally_(path, f):
     return msg
 
 # パス上のすべての状態でいつも f が成り立つ
-def globally_(f):
-    #
-    return True
+def globally_(path, f):
+    r = True
+
+    # TODO: 本来pathは無限なので変更必要
+    for p in path:
+        if not p[0]:
+            r = False
+        else:
+            if f not in p[1]:
+                r = False
+
+    msg = "          真偽 : " + str(r)
+    return msg
 
 # パス上のある状態で g が成り立ち かつ その直前までのすべての状態で f が成り立つ
 def until_(g, f):
@@ -45,3 +56,4 @@ current_point = 1
 
 print( next_(path, current_point, "a") ) # next_ のサンプル
 print( finally_(path, "b") )             # finally_ のサンプル
+print( globally_(path, "b") )            # globally_ のサンプル
