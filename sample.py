@@ -16,6 +16,7 @@ def next_(path, current_point, f):
 # パス上のある状態でいつかは f が成り立つ
 def finally_(path, f):
     r = False
+    # TODO: 本来pathは無限なので変更必要
     for p in path:
         if p[0]:
             if f in p[1]:
